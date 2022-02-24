@@ -1,0 +1,24 @@
+f(x) = 1-|x| for |x| < 1 and f(x) = 0 otherwise
+
+Af(x) = A for x >= 0 and Af(x) = 0 for x < 0; -f(x) = -1 for x >= 0 and -f(x) = 0 for x < 0
+
+
+x = linspace(-5,5,500); %x-axis vector from -5 to 5 with 500 points
+y = zeros(1,500);  %y-axis vector initialized to 0, also 500 points like the x-axis vector
+y(abs(x) < 1) = 1- abs(x(abs(x)<1)); %the points corresponding to |x|< 1 are set to |x|
+
+figure() %new figure
+plot(x,y) %plot
+box off  %removing box
+grid on  %adding grid
+xlabel('x axis', 'FontSize', 15) %label of x axis
+ylabel('y axis', 'FontSize', 15) %label of y axis
+axis([x(1), x(end), -0.5, 1.5])  %axis limits
+
+
+syms x
+fplot(triangularPulse(x), [-2 2])
+
+
+syms x
+fplot(rectangularPulse(x), [-1 1])

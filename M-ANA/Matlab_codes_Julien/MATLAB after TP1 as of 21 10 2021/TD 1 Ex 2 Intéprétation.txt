@@ -1,0 +1,22 @@
+TD 1 Ex 2 Intéprétation :
+
+
+
+Partie Réel:
+On observe deux gaussiennes centrée en -2 et en +2
+En effet TransfoF(f(t)) = %calculs
+
+Partie Imaginaire:
+Très faible partie imaginaire. En théorie on ne devrait pas en avoir. %Cela s'explique par les approximations de calculs, dont la méthode de la tangente pour le calcul inté.
+	Cela s'explique par le fait qu'on utilise une méthode approchée (méthode des trapèzes) pour calculer l'intégrale de Fourier.
+
+
+Phase (Rappel F(f)(v) = abs(F).exp(i.Phi(v))
+
+On observe que la phase varie entre pi et -pi. 
+
+* Lorsque que Cf(v) est au-dessus de l'axe horizontale (Re > 0) alors Phi(v) = 0
+
+*Lorsque Cf(v) est en-dessous (Re<0) alors :
+		Phi(v) = pi (Im(F) >0)
+		Phi(v) = -pi (Im <0)

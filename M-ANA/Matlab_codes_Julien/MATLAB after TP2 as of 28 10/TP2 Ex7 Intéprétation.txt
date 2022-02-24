@@ -1,0 +1,4 @@
+
+z = s . p Multiplication par un peigne de période 2^-6 ECHANTILLONAGE
+
+TransFourier(z,t) Convolution par un peigne de période 2^6  PERIODISATION

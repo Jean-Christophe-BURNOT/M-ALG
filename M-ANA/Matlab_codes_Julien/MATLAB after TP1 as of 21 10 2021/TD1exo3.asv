@@ -1,0 +1,67 @@
+clear variables;close all;
+% intervalle temporel 
+tmin=-5;tmax=5;Te=0.01; 
+t=tmin:Te:tmax; 
+N=length(t); 
+  
+% lorentzienne 
+f0=(1+(t+1).^2).^(-1); 
+ 
+% signal bruité (bruit gaussien) 
+f=f0+0.05*randn(1,N);  
+  
+% affichage 
+figure(1);hold on; 
+plot(t,f); 
+xlabel('temps $(t)$','interpreter','latex');
+
+
+% intervalle fréquentiel 
+nu_e=1/Te; 
+nu=linspace(-nu_e/2,nu_e/2,N); 
+
+
+%Transfo de fourier
+tf = zeros(1,length(nu)); %initialisation
+% calcul de la transformée de Fourier (utiliser commande trapz) 
+for k= 1:length(nu) % pour chaque fréquence  
+    tf(k)= trapz(t, f.*exp(-i*2*pi*nu(k)*t));
+    
+end 
+
+tfFiltre = porte(nu/5).*tf;
+
+figure(2); 
+subplot(311);plot(nu,real(tf),'k');xlim([-10,10]); 
+subplot(312);plot(nu,imag(tf),'k');xlim([-10,10]); 
+subplot(313);plot(nu,angle(tf),'k');xlim([-10,10]); 
+
+figure(3); 
+subplot(311);plot(nu,real(tfFiltre),'k');xlim([-10,10]); 
+subplot(312);plot(nu,imag(tfFiltre),'k');xlim([-10,10]); 
+subplot(313);plot(nu,angle(tfFiltre),'k');xlim([-10,10]); 
+
+
+
+
+
+N2= length(nu);
+
+tfFiltreInverse = zeros(1,N2);
+
+for k= 1:N2 % pour chaque fréquence  
+    tfFiltreInverse(k)= trapz(nu, tfFiltre.*exp(i*2*pi*nu(k)*t));
+    
+end 
+
+figure(1);
+plot(t,tfFiltreInverse,'k'); 
+xlabel('temps $(t)$','interpreter','latex');
+plot(t,tfFiltreInverse,'r'); 
+
+
+
+% figure(4); 
+% subplot(311);plot(t,tfFiltreInverse,'k');xlim([-10,10]); 
+% subplot(312);plot(t,imag(tfFiltreInverse),'k');xlim([-10,10]); 
+% subplot(313);plot(t,angle(tfFiltreInverse),'k');xlim([-10,10]); 
