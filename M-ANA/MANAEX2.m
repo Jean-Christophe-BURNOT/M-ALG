@@ -8,7 +8,8 @@ N=length(t);
 
 % signal f
 
-fonction='a'
+fonction='c'
+%switch case qui permet de répondre aux différentes fonctions
 switch fonction
   case 'a'
     f=exp(-pi*t.^2).*cos(4*pi*t);
@@ -17,6 +18,11 @@ switch fonction
     a = 1;
     taille=5;
     f=porte(t,t0,a,taille);
+  case 'c'
+    t0 = 0;
+    a=2;
+    taille=1;
+    f=triangle(t,t0,a,taille)
   end
 figure(1)
 plot(t,f,'k'); % affichage (en noir)
